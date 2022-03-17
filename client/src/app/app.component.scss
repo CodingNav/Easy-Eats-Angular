@@ -1,0 +1,10 @@
+#body-wrapper {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+}
+
+#content-wrapper {
+    position: relative;
+    flex: 1;
+}

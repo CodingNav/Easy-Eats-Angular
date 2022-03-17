@@ -1,9 +1,14 @@
 <!-- the core components are added around the router-outlet tag -->
 
+<div id="body-wrapper">
 <!-- navbar core component -->
 <app-navbar></app-navbar>
 
+<div id="content-wrapper">
 <!-- this is where all the pages are loaded -->
 <router-outlet></router-outlet>
+</div>
 
 <!-- footer core component -->
+<app-footer></app-footer>
+</div>
