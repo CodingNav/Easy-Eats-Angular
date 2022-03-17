@@ -5,12 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { FooterComponent } from './core/components/footer/footer.component';
+import { HomePageComponent } from './features/home-page/home-page.component';
+import { SearchPageComponent } from './features/search-page/search-page.component';
+import { RecipePageComponent } from './features/recipe-page/recipe-page.component';
+import { CartPageComponent } from './features/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    HomePageComponent,
+    SearchPageComponent,
+    RecipePageComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,
