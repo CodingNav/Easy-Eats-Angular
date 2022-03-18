@@ -1,0 +1,28 @@
+.card-title {
+    height: 100px;
+    overflow: hidden;
+}
+
+.card {
+    height: 450px;
+}
+
+.card .card-content p {
+    letter-spacing: 1px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .card {
+        height: unset;
+    }
+
+    .col:last-child {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .col:nth-child(n+4) {
+        display: none;
+    }
+}

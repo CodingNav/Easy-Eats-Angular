@@ -11,3 +11,10 @@
 html, body {
     height: 100%;
 }
+
+.section-header {
+    margin-bottom: 50px;
+    text-shadow: 1px 1px #fffaf4;
+    color: var(--heading-color);
+    font-family: var(--heading-font-2);
+}

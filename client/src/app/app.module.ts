@@ -9,6 +9,7 @@ import { HomePageComponent } from './features/home-page/home-page.component';
 import { SearchPageComponent } from './features/search-page/search-page.component';
 import { RecipePageComponent } from './features/recipe-page/recipe-page.component';
 import { CartPageComponent } from './features/cart-page/cart-page.component';
+import { RecipeCardComponent } from './shared/components/recipe-card/recipe-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CartPageComponent } from './features/cart-page/cart-page.component';
     HomePageComponent,
     SearchPageComponent,
     RecipePageComponent,
-    CartPageComponent
+    CartPageComponent,
+    RecipeCardComponent
   ],
   imports: [
     BrowserModule,
