@@ -10,6 +10,7 @@ import { SearchPageComponent } from './features/search-page/search-page.componen
 import { RecipePageComponent } from './features/recipe-page/recipe-page.component';
 import { CartPageComponent } from './features/cart-page/cart-page.component';
 import { RecipeCardComponent } from './shared/components/recipe-card/recipe-card.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { RecipeCardComponent } from './shared/components/recipe-card/recipe-card
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
