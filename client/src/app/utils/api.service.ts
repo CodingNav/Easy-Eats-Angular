@@ -38,5 +38,13 @@ export class ApiService {
 
     return popRecipes;
   }
-}
 
+  searchRecipe(recipe: string): Promise<any> {
+    const recipeURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + recipe;
+
+    return fetch(recipeURL)
+      .then(function (response) {
+        return response.json();
+      });
+  }
+}

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class HomePageComponent implements OnInit {
 
   recipes: any[] = [];
+  
   homeSearch = new FormGroup({
     search: new FormControl('')
   });
@@ -24,7 +25,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.api.getPopRecipes().then((data) => {
       this.recipes = data;
-    })
+    });
   }
 
   onSubmit() {
