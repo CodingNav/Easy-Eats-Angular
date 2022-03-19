@@ -1,0 +1,166 @@
+/* RECIPE PAGE */
+
+.center {
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    transform: translateY(-60%);
+}
+
+#recipe-top {
+    position: relative;
+    height: 87vh;
+    margin: 0;
+    border-bottom: 1px solid rgb(226, 221, 204);
+}
+
+#recipe-category {
+    letter-spacing: 2px;
+}
+
+#recipe-name {
+    color: var(--heading-color);
+    font-family: var(--heading-font);
+}
+
+#recipe-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+}
+
+#recipe-tags {
+    margin: 8px 0;
+    font-size: 16px;
+    font-family: var(--heading-font-2);
+}
+
+#recipe-info {
+    width: 80vw;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: #fbeed5;
+}
+
+#recipe-info h3 {
+    font-family: var(--heading-font-2);
+    color: var(--heading-color);
+}
+
+#recipe-info hr {
+    width: 55vw;
+    border-width: 2px;
+    border-color: #ceba95;
+}
+
+#ingredient-list {
+    line-height: 40px;
+}
+
+#recipe-info #modal-btn {
+    background-color: var(--primary-color);
+}
+
+#recipe-info #modal-btn:hover {
+    background-color: #bd4237;
+}
+
+#email-signup hr {
+    margin: 50px;
+    border-color: #ceba95;
+}
+
+#email-signup h3 {
+    padding-bottom: 20px;
+    font-family: var(--heading-font);
+}
+
+#email-signup p {
+    display: inline;
+    margin-right: 20px;
+    font-size: 20px;
+    font-family: var(--heading-font-2);
+    letter-spacing: 1px;
+}
+
+#email-signup input {
+    width: 30vw;
+    border: 1px solid #9e9e9e;
+    box-shadow: 0px 0px 0px 2px #ffffff00;
+}
+
+#email-signup input:focus {
+    border: 1px solid #ffffff00;
+    -webkit-box-shadow: 0px 0px 0px 2px #1900ff;
+    box-shadow: 0px 0px 0px 2px #1900ff;
+}
+
+#email-signup a {
+    margin-left: 25px;
+    background-color: var(--primary-color);
+}
+
+/* MODAL */
+
+#recipe-instructions {
+    white-space: pre-line;
+}
+
+#ingredient-name {
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-family: var(--heading-font-2);
+}
+
+/* Modal Card */
+
+.modal.bottom-sheet {
+    max-height: 60%;
+}
+
+#ingredient-content h4, #done-content h4 {
+    font-family: var(--heading-font);
+}
+
+#next-btn, #done-btn {
+    letter-spacing: 1px;
+    font-family: var(--primary-font);
+    background-color: var(--primary-color);
+}
+
+.modal-card {
+    min-height: 550px;
+}
+
+.modal-card .card-content {
+    min-height: 154px;
+}
+
+.checked {
+    border: 3px solid lightgreen;
+}
+
+/* Modal Substitute Item Search Bar */
+.input-field {
+    margin: 0;
+}
+
+#substitute-search {
+    margin: 0px 30px;
+}
+
+#substitute-search input {
+    margin: 0;
+    width: calc(100% - 30px);
+    height: unset;
+    padding-left: 30px;
+}
+
+#substitute-search i {
+    line-height: unset;
+}
+
+#substitute-search .label-icon {
+    left: 0;
+}

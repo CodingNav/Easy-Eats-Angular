@@ -53,14 +53,16 @@ export class RecipePageComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(newURL);
   }
 
-  // recipeInstructions(instructions: string) {
-  //   const orderedInstructions = instructions.split(".");
+  recipeInstructions(instructions: string) {
+    const orderedInstructions = instructions.split(".");
+    let newInstructions = "";
 
-  //   for (let i = 0; i < orderedInstructions.length; i++) {
-  //     if (orderedInstructions[i].trim() !== "") {
-  //       return "." + orderedInstructions[i].trim().replace("\r\n", "") + "<br><br>";
-  //     }
-  //   }
-  // }
+    for (let i = 0; i < orderedInstructions.length; i++) {
+      if (orderedInstructions[i].trim() !== "") {
+        newInstructions += orderedInstructions[i].trim().replace("\r\n", "") + "." + "<br><br>";
+      }
+    }
+    return newInstructions;
+  }
 
 }
