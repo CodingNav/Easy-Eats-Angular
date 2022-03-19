@@ -23,7 +23,7 @@ export class HomePageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.api.getPopRecipes().then((data) => {
+    this.api.getRandomRecipes().then((data) => {
       this.recipes = data;
     });
   }

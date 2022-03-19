@@ -1,1 +1,11 @@
-<p>search-page works!</p>
+  <!-- Search Results -->
+  <div id="search-results" class="container">
+    <h3><span id="num-of-results"></span> Recipe Results...</h3>
+    <!-- cards go here -->
+    <div id="search-row" class="row">
+        <app-recipe-card 
+            *ngFor="let recipe of recipes; index as i;"
+            [recipeData]="recipe">
+        </app-recipe-card>
+    </div>
+  </div>

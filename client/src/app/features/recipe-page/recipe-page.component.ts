@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../../utils/api.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-recipe-page',
@@ -7,9 +10,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipePageComponent implements OnInit {
 
-  constructor() { }
+  recipes: any[] = [];
+  recipeData: any = {};
+
+  constructor(
+    private api: ApiService,
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
+  ) { }
 
   ngOnInit(): void {
+    const recipeId: string = this.route.snapshot.paramMap.get('id') || "";
+
+  // subscribe runs API everytime route/parameter/id changes 
+    this.route.params.subscribe(routeParams => {
+      this.api.loadRecipeByID(routeParams['id']).then((data) => {
+        this.recipeData = data;
+      });
+      this.scrollToTop();
+    });
+
+    this.api.getRandomRecipes().then((data) => {
+      this.recipes = data;
+    });
   }
+
+    // Smooth scrolls page to top when you go to a new page
+  // everytime a route is activated, run this function
+  scrollToTop() {
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 20); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 0);
+  }
+
+  youtubeURL(url: string): SafeUrl {
+    const newURL = url.replace("watch?v=", "embed/");
+    return this.sanitizer.bypassSecurityTrustResourceUrl(newURL);
+  }
+
+  // recipeInstructions(instructions: string) {
+  //   const orderedInstructions = instructions.split(".");
+
+  //   for (let i = 0; i < orderedInstructions.length; i++) {
+  //     if (orderedInstructions[i].trim() !== "") {
+  //       return "." + orderedInstructions[i].trim().replace("\r\n", "") + "<br><br>";
+  //     }
+  //   }
+  // }
 
 }

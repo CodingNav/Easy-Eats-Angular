@@ -21,10 +21,9 @@ export class SearchPageComponent implements OnInit {
       .subscribe(params => {
         console.log(params);
         this.api.searchRecipe(params['q']).then((data) => {
-          this.recipes = data;
+          this.recipes = data.meals;
         });
       }
       );
-
   }
 }

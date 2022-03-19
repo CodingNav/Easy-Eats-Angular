@@ -51,7 +51,8 @@
     <div id="popular-recipes" class="row">
         <app-recipe-card 
             *ngFor="let recipe of recipes; index as i;"
-            [recipeData]="recipe">
+            [recipeData]="recipe"
+            [hiddenCards]="true">
         </app-recipe-card>
     </div>
 </div>

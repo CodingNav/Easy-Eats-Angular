@@ -8,7 +8,7 @@ import { SearchPageComponent } from './features/search-page/search-page.componen
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'search', component: SearchPageComponent },
-  { path: 'recipe', component: RecipePageComponent },
+  { path: 'recipe/:id', component: RecipePageComponent },
   { path: 'cart', component: CartPageComponent },
 ];
 

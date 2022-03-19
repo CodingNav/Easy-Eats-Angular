@@ -8,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class RecipeCardComponent implements OnInit {
 
   @Input() recipeData: any;
- 
+  @Input() hiddenCards: boolean=false;
+
   constructor() { }
 
   ngOnInit(): void {

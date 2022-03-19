@@ -22,21 +22,21 @@ export class ApiService {
         if (usedRecipes.includes(recipeId)) {
           return this.loadRandomRecipe(i + 100, usedRecipes);
         }
-        return data;
+        return data.meals[0];
       });
   }
 
-  async getPopRecipes(): Promise<any[]> {
+  async getRandomRecipes(): Promise<any[]> {
     const usedRecipes: number[] = [];
-    const popRecipes: object[] = [];
+    const randomRecipes: object[] = [];
 
     for (let i = 0; i < 10; i++) {
       const recipe = await this.loadRandomRecipe(i, usedRecipes);
-      popRecipes.push(recipe);
-      usedRecipes.push(recipe.meals[0].idMeal);
+      randomRecipes.push(recipe);
+      usedRecipes.push(recipe.idMeal);
     }
 
-    return popRecipes;
+    return randomRecipes;
   }
 
   searchRecipe(recipe: string): Promise<any> {
@@ -46,5 +46,19 @@ export class ApiService {
       .then(function (response) {
         return response.json();
       });
+  }
+
+  // ----------------------[GRABS DATA FROM RECIPES API FOR RECIPE PAGE]-------------------------
+  // Recipe API Request by Id
+  loadRecipeByID(id: string): Promise<any> {
+    const recipeURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id
+
+    return fetch(recipeURL)
+      .then(function (response) {
+        return response.json();
+      })
+      .then((data) => {
+        return data.meals[0];
+      })
   }
 }
