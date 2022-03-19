@@ -48,9 +48,13 @@ export class RecipePageComponent implements OnInit {
     }, 0);
   }
 
-  youtubeURL(url: string): SafeUrl {
-    const newURL = url.replace("watch?v=", "embed/");
-    return this.sanitizer.bypassSecurityTrustResourceUrl(newURL);
+  recipeTags(tags: string) {
+    if (tags) {
+      return "Tags: " + tags.replace(/,/g, ", ")
+    }
+    else {
+      return '"recipe made with love'
+    }
   }
 
   recipeInstructions(instructions: string) {
@@ -63,6 +67,11 @@ export class RecipePageComponent implements OnInit {
       }
     }
     return newInstructions;
+  }
+
+  youtubeURL(url: string): SafeUrl {
+    const newURL = url.replace("watch?v=", "embed/");
+    return this.sanitizer.bypassSecurityTrustResourceUrl(newURL);
   }
 
 }
