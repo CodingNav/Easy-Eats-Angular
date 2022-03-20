@@ -1,1 +1,62 @@
-<p>cart-page works!</p>
+<div id="cart-section" class="container">
+    <!--User's Recipes -->
+    <h2>Your Recipes</h2>
+    <ul class="collapsible" id="chosen-recipes"></ul>
+    <p id="user-recipe-msg"></p>
+
+    <!--shopping cart-->
+    <h2>Shopping Cart<a id="add-ingred" class="btn modal-trigger" href="#ingredient-modal">Add More Ingredients</a></h2>
+    <ul class="collection" id="cart-ingredients"></ul>
+    <p id="empty-cart-msg"></p>
+
+    <!--total-->
+    <div id="checkout-section">
+        <div id="total-section" class="row">
+            <div class="col s6"></div>
+            <div class="col s2">
+                <p>Subtotal:</p>
+                <p>Shipping:</p>
+                <hr>
+                <p>Total:</p>
+            </div>
+            <div class="align-section col s4">
+                <p>$<span id="value-display"></span></p>
+                <p>Calculated at checkout</p>
+                <hr>
+                <p>$<span id="total-display"></span></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 align-section">
+                <a id="checkout-btn" class="btn">Proceed to Checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL HTML -->
+
+<!-- Modal Structure -->
+<div id="ingredient-modal" class="cart-modal modal bottom-sheet">
+    <!-- Ingredients Modal -->
+    <div class="modal-content" id="ingredient-content">
+        <h4>Pick Your Choice of Ingredient
+            <!-- Close Button -->
+            <a class="modal-close waves-effect waves-light btn right" id="close-btn">Close</a>
+            <!-- Add Button -->
+            <a class="waves-effect waves-light btn right" id="add-btn">Add</a>
+            <!-- Search Bar for substitute ingredients -->
+            <form class="right" id="substitute-search" style="display:inline-block; width:25%">
+                <div class="input-field">
+                    <input id="substitute-input" type="search" placeholder="Enter substitute item" autocomplete="off"
+                        required>
+                    <label class="label-icon" for="substitute-input"><i class="material-icons">search</i></label>
+                </div>
+            </form>
+        </h4>
+        <h5 class="center-align" id="ingredient-name">Search for the Ingredient</h5>
+
+        <!-- Modal Cards -->
+        <div class="row" id="ingredient-card"></div>
+    </div>
+</div>
