@@ -10,6 +10,7 @@ export class IngredientModalComponent implements OnInit {
 
   currentIngredient: any = {};
   currentIndex: number = 0;
+  selectedIngredients: any[] = []
 
   @Input() ingredients: any;
 
@@ -18,8 +19,8 @@ export class IngredientModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
   }
+
   firstIngredient() {
     if (this.ingredients.length) {
       this.api.searchIngredients(this.ingredients[0].ing).then((data) => {
@@ -34,7 +35,32 @@ export class IngredientModalComponent implements OnInit {
     this.api.searchIngredients(this.ingredients[this.currentIndex].ing).then((data) => {
       this.currentIngredient = data;
     });
-
   }
 
+  selectIngredient(ingredient: any) {
+    const foundIngIndex = this.selectedIngredients.findIndex((s) => {
+      return s.slug == ingredient.slug;
+    });
+
+    if(foundIngIndex > -1) {
+      this.selectedIngredients.splice(foundIngIndex, 1);
+    }
+    else {
+      this.selectedIngredients.push(ingredient);
+    }
+    console.log(this.selectedIngredients);
+  }
+
+  checkboxDisplay(slug: string) {
+    const foundIngredient = this.selectedIngredients.find((s) => {
+      return s.slug == slug;
+    });
+
+    if(foundIngredient) {
+      return "check_box";
+    }
+    else {
+      return "check_box_outline_blank";
+    }
+  }
 }

@@ -38,7 +38,7 @@
                             </div>
                         </a>
                         <div class="card-action center-align">
-                            <i class="material-icons checkbox-outline">check_box_outline_blank</i>
+                            <i class="material-icons checkbox-outline" (click)="selectIngredient(ing)">{{checkboxDisplay(ing.slug)}}</i>
                         </div>
                     </div>
                 </div>
