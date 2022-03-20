@@ -25,7 +25,7 @@
             <!-- Ingredient Cards for Modal added to page here -->
             <ng-container *ngIf="currentIngredient.results && currentIngredient.results.length > 0 else noResults">
                 <div class="col s6 m3 l2" *ngFor="let ing of currentIngredient.results;">
-                    <div class="card modal-card">
+                    <div class="card modal-card" [class.checked]="checkboxDisplay(ing.slug)=='check_box'">
                         <a href="https://www.wholefoodsmarket.com/product/{{ing.slug}}" target="_blank"
                             style="display:block; color:black">
                             <div class="card-image">
@@ -53,14 +53,12 @@
 
         </div>
     </div>
-
 </div>
 
 <ng-template #finalize>
     <!-- Finalize Modal -->
     <div class="modal-content" id="done-content">
-        <h4>Finalize your items <a class="waves-effect waves-light btn modal-close right" id="done-btn">Done</a>
-        </h4>
+        <h4>Finalize your items <a class="waves-effect waves-light btn modal-close right" id="done-btn">Done</a></h4>
         <p><i>Click done to add final items to cart.</i></p>
 
         <!-- Chosen Ingredients Cards -->

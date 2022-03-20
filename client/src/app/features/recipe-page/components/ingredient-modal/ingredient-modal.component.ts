@@ -26,6 +26,10 @@ export class IngredientModalComponent implements OnInit {
       this.api.searchIngredients(this.ingredients[0].ing).then((data) => {
         this.currentIngredient = data;
         this.currentIndex = 0;
+
+        if (data.results.length > 0) {
+          this.selectedIngredients.push(data.results[0]);
+        }
       });
     }
   }
@@ -35,6 +39,10 @@ export class IngredientModalComponent implements OnInit {
     if (this.currentIndex < this.ingredients.length) {
       this.api.searchIngredients(this.ingredients[this.currentIndex].ing).then((data) => {
         this.currentIngredient = data;
+
+        if (data.results.length > 0) {
+          this.selectedIngredients.push(data.results[0]);
+        }
       });
     }
   }
