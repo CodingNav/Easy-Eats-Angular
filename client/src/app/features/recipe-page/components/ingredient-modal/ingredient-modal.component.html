@@ -4,7 +4,7 @@
 <div id="ingredient-modal" class="modal bottom-sheet">
 
     <!-- Ingredients Modal -->
-    <div class="modal-content" id="ingredient-content" *ngIf="currentIndex < ingredients.length-1 else finalize">
+    <div class="modal-content" id="ingredient-content" *ngIf="currentIndex < ingredients.length else finalize">
         <h4>Pick Your Choice of Ingredient
             <!-- Next Button -->
             <a class="waves-effect waves-light btn right" id="next-btn" (click)="nextBtn()">Next</a>
@@ -62,6 +62,25 @@
         <p><i>Click done to add final items to cart.</i></p>
 
         <!-- Chosen Ingredients Cards -->
-        <div class="row" id="chosen-ingredients"></div>
+        <div class="row" id="chosen-ingredients">
+            <div class="col s6 m3 l2" *ngFor="let ing of selectedIngredients;">
+                <div class="card modal-card" [class.checked]="ing.checked">
+                    <a href="https://www.wholefoodsmarket.com/product/{{ing.slug}}" target="_blank"
+                        style="display:block; color:black">
+                        <div class="card-image">
+                            <img src="{{ing.imageThumbnail}}">
+                        </div>
+                        <div class="card-content">
+                            <p class="brand"><b>{{ing.brand}}</b></p>
+                            <p class="name">{{ing.name}}</p>
+                            <p>${{ing.regularPrice}}</p>
+                        </div>
+                    </a>
+                    <div class="card-action center-align">
+                        <i class="material-icons checkbox-outline" (click)="ing.checked=!ing.checked">{{finalCheckboxDisplay(ing.slug)}}</i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </ng-template>

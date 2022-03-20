@@ -28,6 +28,7 @@ export class IngredientModalComponent implements OnInit {
         this.currentIndex = 0;
 
         if (data.results.length > 0) {
+          data.results[0].checked = true;
           this.selectedIngredients.push(data.results[0]);
         }
       });
@@ -41,6 +42,7 @@ export class IngredientModalComponent implements OnInit {
         this.currentIngredient = data;
 
         if (data.results.length > 0) {
+          data.results[0].checked = true;
           this.selectedIngredients.push(data.results[0]);
         }
       });
@@ -56,9 +58,9 @@ export class IngredientModalComponent implements OnInit {
       this.selectedIngredients.splice(foundIngIndex, 1);
     }
     else {
+      ingredient.checked = true;
       this.selectedIngredients.push(ingredient);
     }
-    console.log(this.selectedIngredients);
   }
 
   checkboxDisplay(slug: string) {
@@ -71,6 +73,32 @@ export class IngredientModalComponent implements OnInit {
     }
     else {
       return "check_box_outline_blank";
+    }
+  }
+
+  finalCheckboxDisplay(slug: string) {
+    const foundIngredient = this.selectedIngredients.find((s) => {
+      return s.slug == slug;
+    });
+
+    if (foundIngredient && foundIngredient.checked) {
+      return "check_box";
+    }
+    else {
+      return "check_box_outline_blank";
+    }
+  }
+
+  selectFinalIngredient(ingredient: any) {
+    const foundIngIndex = this.selectedIngredients.findIndex((s) => {
+      return s.slug == ingredient.slug;
+    });
+
+    if (foundIngIndex > -1) {
+      this.selectedIngredients[foundIngIndex].checked = false;
+    }
+    else {
+      this.selectedIngredients[foundIngIndex].checked = true;
     }
   }
 }
