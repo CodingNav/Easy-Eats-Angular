@@ -4,7 +4,7 @@
 <div id="ingredient-modal" class="modal bottom-sheet">
 
     <!-- Ingredients Modal -->
-    <div class="modal-content" id="ingredient-content">
+    <div class="modal-content" id="ingredient-content" *ngIf="currentIndex < ingredients.length-1 else finalize">
         <h4>Pick Your Choice of Ingredient
             <!-- Next Button -->
             <a class="waves-effect waves-light btn right" id="next-btn" (click)="nextBtn()">Next</a>
@@ -55,7 +55,6 @@
     </div>
 
 </div>
-
 
 <ng-template #finalize>
     <!-- Finalize Modal -->

@@ -32,9 +32,11 @@ export class IngredientModalComponent implements OnInit {
 
   nextBtn() {
     this.currentIndex = this.currentIndex + 1;
-    this.api.searchIngredients(this.ingredients[this.currentIndex].ing).then((data) => {
-      this.currentIngredient = data;
-    });
+    if (this.currentIndex < this.ingredients.length) {
+      this.api.searchIngredients(this.ingredients[this.currentIndex].ing).then((data) => {
+        this.currentIngredient = data;
+      });
+    }
   }
 
   selectIngredient(ingredient: any) {
@@ -42,7 +44,7 @@ export class IngredientModalComponent implements OnInit {
       return s.slug == ingredient.slug;
     });
 
-    if(foundIngIndex > -1) {
+    if (foundIngIndex > -1) {
       this.selectedIngredients.splice(foundIngIndex, 1);
     }
     else {
@@ -56,7 +58,7 @@ export class IngredientModalComponent implements OnInit {
       return s.slug == slug;
     });
 
-    if(foundIngredient) {
+    if (foundIngredient) {
       return "check_box";
     }
     else {
