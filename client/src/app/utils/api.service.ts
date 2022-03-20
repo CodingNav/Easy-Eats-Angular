@@ -61,4 +61,19 @@ export class ApiService {
         return data.meals[0];
       })
   }
+
+  searchIngredients(ingredient: string) {
+    const proxy = "https://api.allorigins.win/get?url=";
+    const ingredientsURL = proxy + encodeURIComponent("https://www.wholefoodsmarket.com/api/search?text=" + ingredient + "&store=10713&limit=60&offset=0");
+
+    return fetch(ingredientsURL)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (proxyData) {
+        return JSON.parse(proxyData.contents);
+      })
+  }
+
+
 }

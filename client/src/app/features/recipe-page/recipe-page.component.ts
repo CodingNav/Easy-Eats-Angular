@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../utils/api.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { IngredientModalComponent } from './components/ingredient-modal/ingredient-modal.component';
 
 @Component({
   selector: 'app-recipe-page',
@@ -10,8 +11,12 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class RecipePageComponent implements OnInit {
 
+  @ViewChild(IngredientModalComponent)
+  ingComponent!: IngredientModalComponent;
+  
   recipes: any[] = [];
   recipeData: any = {};
+  ingredients: any[] = [];
 
   constructor(
     private api: ApiService,
@@ -22,10 +27,18 @@ export class RecipePageComponent implements OnInit {
   ngOnInit(): void {
     const recipeId: string = this.route.snapshot.paramMap.get('id') || "";
 
-  // subscribe runs API everytime route/parameter/id changes 
+    // subscribe runs API everytime route/parameter/id changes 
     this.route.params.subscribe(routeParams => {
       this.api.loadRecipeByID(routeParams['id']).then((data) => {
         this.recipeData = data;
+        this.ingredients = [];
+        for (let i = 1; i < 21; i++) {
+          var ing = data["strIngredient" + i];
+          var measure = data["strMeasure" + i];
+          if (ing != null && ing != "") {
+            this.ingredients.push({ ing, measure });
+          }
+        }
       });
       this.scrollToTop();
     });
@@ -35,7 +48,7 @@ export class RecipePageComponent implements OnInit {
     });
   }
 
-    // Smooth scrolls page to top when you go to a new page
+  // Smooth scrolls page to top when you go to a new page
   // everytime a route is activated, run this function
   scrollToTop() {
     let scrollToTop = window.setInterval(() => {
@@ -58,6 +71,9 @@ export class RecipePageComponent implements OnInit {
   }
 
   recipeInstructions(instructions: string) {
+    if (!instructions) {
+      return "";
+    }
     const orderedInstructions = instructions.split(".");
     let newInstructions = "";
 

@@ -11,6 +11,7 @@ import { RecipePageComponent } from './features/recipe-page/recipe-page.componen
 import { CartPageComponent } from './features/cart-page/cart-page.component';
 import { RecipeCardComponent } from './shared/components/recipe-card/recipe-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IngredientModalComponent } from './features/recipe-page/components/ingredient-modal/ingredient-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SearchPageComponent,
     RecipePageComponent,
     CartPageComponent,
-    RecipeCardComponent
+    RecipeCardComponent,
+    IngredientModalComponent
   ],
   imports: [
     BrowserModule,
