@@ -14,6 +14,7 @@ Now:
     - Set up empty search page
 - Add loading animation on cards
 - Add more comments on code
+- Fix mobile responsiveness
 
 Future:
 - Change to Angular materialize
