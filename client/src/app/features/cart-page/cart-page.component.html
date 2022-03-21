@@ -1,12 +1,58 @@
 <div id="cart-section" class="container">
     <!--User's Recipes -->
     <h2>Your Recipes</h2>
-    <ul class="collapsible" id="chosen-recipes"></ul>
+    <ul class="collapsible" id="chosen-recipes">
+        <li *ngFor="let recipe of cart.recipes;">
+            <div class="collapsible-header">
+                <div class="row" style="margin:0">
+                    <div class="col m1 center-align">
+                        <i class="material-icons">dehaze</i> 
+                    </div>
+                    <div class="col m3 center-align">
+                        <a routerLink="/recipe/{{recipe.id}}"><img src="{{recipe.image}}" width="100px"/></a> 
+                    </div>
+                    <div class="col m6 center-align">
+                        <p>{{recipe.name}}</p>
+                    </div>
+                    <div class="col m2 center-align">
+                        <i id="x-btn" class="clear material-icons" data-index="0">clear</i>
+                    </div>
+                </div>
+            </div>
+            <div class="collapsible-body">
+                <ul>
+                    <li *ngFor="let ing of recipe.ingredients">{{ing.measure}} {{ing.ing}}</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
     <p id="user-recipe-msg"></p>
 
     <!--shopping cart-->
     <h2>Shopping Cart<a id="add-ingred" class="btn modal-trigger" href="#ingredient-modal">Add More Ingredients</a></h2>
-    <ul class="collection" id="cart-ingredients"></ul>
+    <ul class="collection" id="cart-ingredients">
+        <li class="collection-item" *ngFor="let ing of cart.ingredients">
+            <div class="row">
+                <div class="col m2">
+                    <a href="{{ing.link}}" target="_blank">
+                        <img src="{{ing.image}}" width="100" height="100"/>
+                    </a>
+                </div>
+                <div class="col m5">
+                    <p>{{ing.name}}</p>
+                </div>
+                <div class="col m1 center-align">
+                    <input class="quantity center-align" type="number" value="{{ing.quantity}}" min="1">
+                </div>
+                <div class="col m2 center-align">
+                    <p>$<span class="price">{{(ing.price * ing.quantity).toFixed(2)}}</span></p>
+                </div>
+                <div class="col m2 center-align">
+                    <i class="clear material-icons">clear</i>
+                </div>
+            </div>
+        </li>        
+    </ul>
     <p id="empty-cart-msg"></p>
 
     <!--total-->
@@ -20,10 +66,10 @@
                 <p>Total:</p>
             </div>
             <div class="align-section col s4">
-                <p>$<span id="value-display"></span></p>
+                <p>{{totalPrice() | currency}}</p>
                 <p>Calculated at checkout</p>
                 <hr>
-                <p>$<span id="total-display"></span></p>
+                <p>{{totalPrice() | currency}}</p>
             </div>
         </div>
         <div class="row">

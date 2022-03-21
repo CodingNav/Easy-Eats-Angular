@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { WindowRef } from 'src/app/core/injectables/WindowRef.injectable';
 import { ApiService } from 'src/app/utils/api.service';
 
 @Component({
@@ -13,12 +14,17 @@ export class IngredientModalComponent implements OnInit {
   selectedIngredients: any[] = []
 
   @Input() ingredients: any;
+  @Input() recipeData: any;
 
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private winRef: WindowRef
   ) { }
 
   ngOnInit(): void {
+     // Modal Initializer
+     var elemsC = document.querySelectorAll('.modal');
+     var instancesC = this.winRef.nativeWindow.M.Modal.init(elemsC);
   }
 
   firstIngredient() {
@@ -89,16 +95,58 @@ export class IngredientModalComponent implements OnInit {
     }
   }
 
-  selectFinalIngredient(ingredient: any) {
-    const foundIngIndex = this.selectedIngredients.findIndex((s) => {
-      return s.slug == ingredient.slug;
-    });
+  doneBtn() {
+    let cart: any = {
+      recipes: [],
+      ingredients: []
+    };
 
-    if (foundIngIndex > -1) {
-      this.selectedIngredients[foundIngIndex].checked = false;
+    const savedCard = localStorage.getItem('cart');
+
+    // Checks if there was data saved in local storage already
+    // This helps add info to local storage, rather than replace
+    if (savedCard != null) {
+      cart = JSON.parse(savedCard);
     }
-    else {
-      this.selectedIngredients[foundIngIndex].checked = true;
+
+    // Loops through cards checked by user
+    for (let i = 0; i < this.selectedIngredients.length; i++) {
+      const ing = this.selectedIngredients[i];
+      // Adds each cards info to this object
+      const ingredientInfo = {
+        link: ing.slug,
+        image: ing.imageThumbnail,
+        brand: ing.brand,
+        name: ing.name,
+        price: ing.regularPrice,
+        quantity: 1
+      }
+      // Checks if new ingredient added already exists
+      const ingredientExists = cart.ingredients.find(function (savedIngredient: any) {
+        return savedIngredient.link == ingredientInfo.link;
+      });
+
+      if (!ingredientExists) {
+        // Pushes cards info into array
+        cart.ingredients.push(ingredientInfo);
+      }
     }
+
+    const recipe = {
+      id: this.recipeData.idMeal,
+      name: this.recipeData.strMeal,
+      image: this.recipeData.strMealThumb,
+      ingredients: this.ingredients,
+    }
+
+    // Checks if new recipe added already exists
+    const recipeExists = cart.recipes.find(function (savedRecipe: any) {
+      return savedRecipe.Id == recipe.id;
+    });
+    if (!recipeExists) {
+      cart.recipes.push(recipe);
+    }
+    // Saved information to localStorage under name cart
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 }

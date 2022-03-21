@@ -12,6 +12,7 @@ import { CartPageComponent } from './features/cart-page/cart-page.component';
 import { RecipeCardComponent } from './shared/components/recipe-card/recipe-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IngredientModalComponent } from './features/recipe-page/components/ingredient-modal/ingredient-modal.component';
+import { WindowRef } from './core/injectables/WindowRef.injectable';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { IngredientModalComponent } from './features/recipe-page/components/ingr
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [WindowRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
