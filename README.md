@@ -58,8 +58,8 @@ THEN I am presented with my recipes, ingredients chosen in the recipe cart, tota
 
 ## Technologies
 ### Front End
-<img align="middle" src="./client/src/assets/images/html.png" alt="HTML5" width="12%"/>&nbsp; &nbsp;
-<img align="middle" src="./client/src/assets/images/sass.png" alt="Sass" width="20%"/>&nbsp; &nbsp;
-<img align="middle" src="./client/src/assets/images/materialize.png" alt="Materialize" width="20%"/>&nbsp; &nbsp; &nbsp; 
-<img align="middle" src="./client/src/assets/images/ts.png" alt="Typescript" width="16%"/>&nbsp; &nbsp; &nbsp; 
-<img align="middle" src="./client/src/assets/images/angular.png" alt="Angular" width="30%"/>&nbsp; &nbsp; &nbsp; 
+<img align="middle" src="./client/src/assets/images/html.png" alt="HTML5" width="10%"/>&nbsp; &nbsp;
+<img align="middle" src="./client/src/assets/images/sass.png" alt="Sass" width="15%"/>&nbsp; &nbsp;
+<img align="middle" src="./client/src/assets/images/materialize.png" alt="Materialize" width="15%"/>&nbsp; &nbsp; &nbsp; 
+<img align="middle" src="./client/src/assets/images/ts.png" alt="Typescript" width="10%"/>&nbsp; &nbsp; &nbsp; 
+<img align="middle" src="./client/src/assets/images/angular.png" alt="Angular" width="21%"/>&nbsp; &nbsp; &nbsp; 
